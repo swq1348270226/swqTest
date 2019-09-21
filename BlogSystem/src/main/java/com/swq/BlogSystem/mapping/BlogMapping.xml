@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swq.BlogSystem.dao.BlogDao">
+
+	<resultMap id="BlogMap" type="com.swq.BlogSystem.pojo.Blog">
+		<id column="bid" property="bid"/>
+	    <result column="content" property="content"/>
+	    <result column="title" property="title" />
+	    <result column="commit" property="commit"/>
+	    <result column="comitTime" property="comitTime"/>
+	    <result column="lastUpdateBy" property="lastUpdateBy"/>
+	    <result column="isDelete" property="isDelete"/>
+	    <result column="visitCount" property="visitCount"/>
+	    <result column="collectionCount" property="collectionCount"/>
+	    <result column="commentCount" property="commentCount"/>
+	</resultMap>
+
+    <!-- 第一种方式，基于dao的方式-->
+
+    <insert id="createBlog" parameterType="com.swq.BlogSystem.pojo.Blog" >
+	    insert into blogsystem
+	    (
+	    <if test="bid !=null and bid !=''">
+	    	bid
+	    </if>
+	    <if test="content !=null and content !=''">
+	    	,content
+	    </if>
+	   	<if test="contentTxt !=null and contentTxt !=''">
+	    	,contentTxt
+	    </if>
+	   	<if test="title !=null and title !=''">
+	    	,title
+	    </if>
+	    <if test="commit !=null and commit !=''">
+	    	,commit
+	    </if>
+	    	,comitTime
+	    <if test="lastUpdateBy !=null and lastUpdateBy !=''">
+	    	,lastUpdateBy
+	    </if>
+	    <if test="isDelete !=null and isDelete !=''">
+	    	,isDelete
+	    </if>
+	    )
+	     value 
+	     (
+	     <if test="bid !=null and bid !=''">
+	     	#{bid}
+	     </if>
+	     <if test="content !=null and content !=''">
+	     	,#{content}
+	     </if>
+	     <if test="contentTxt !=null and contentTxt !=''">
+	    	,#{contentTxt}
+	    </if>
+	     <if test="title !=null and title !=''">
+	    	,#{title}
+	    </if>
+	     <if test="commit !=null and commit !=''">
+	     	,#{commit}
+	     </if>
+	     	,now()
+	     <if test="lastUpdateBy !=null and lastUpdateBy !=''">
+	     	,#{lastUpdateBy}
+	     </if>
+	     <if test="isDelete !=null and isDelete !=''">
+	     	,#{isDelete}
+	     </if>
+	     )
+
+    </insert>
+    
+    <select id="getBlogList" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultMap="BlogMap">
+    	select * from blogsystem
+    	order by comitTime desc
+    	limit #{pageIndex},#{pageSize}
+<!--     	<if test="pageIndex !=null and pageIndex!='' and pageSize!=null and pageSize != ''">
+    	</if> -->
+    </select>
+    
+    <select id="getBlogById" parameterType="string" resultMap="BlogMap">
+    	select * from blogsystem where bid = #{bid}
+    	
+    </select>
+    
+    <select id="getBlogCount" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultType="Integer">
+     select count(1) from blogsystem
+    </select>
+       
+</mapper>

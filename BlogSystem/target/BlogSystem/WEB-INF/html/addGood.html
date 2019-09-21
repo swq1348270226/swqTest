@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/addGood.css">
+<link rel="stylesheet" href="./css/fileUpload.css">
+<script type="text/javascript" src="./common/jquery-3.4.1.js"></script>
+
+<!-- 图片上传插件 -->
+<script type="text/javascript" src="./js/jQuery-File-Upload/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="./js/jQuery-File-Upload/js/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="./js/jQuery-File-Upload/js/jquery.fileupload.js"></script>
+<script type="text/javascript" src="./js/jQuery-File-Upload/js/jquery.fileupload-process.js"></script>
+<script type="text/javascript" src="./js/jQuery-File-Upload/js/jquery.fileupload-validate.js"></script>
+
+<script type="text/javascript" src="./js/addGood.js"></script>
+<title>二手拍卖网</title>
+
+</head>
+<body>
+<div class="main">
+	<div>
+		<ul>
+			<li><span class="li_span">发布宝贝</span></li>
+			<li><span class="li_span">标题</span><input id="" name="" /></li>
+			<li><span class="li_span">详细描述</span><input id="" name="" /></li>
+			<li class="li_span_img">
+				<div>
+					<input id="uploadImg" type="file" name="uploadImg" multiple style="display:none"/> 
+					<button id="chooseFile">+选择文件</button> 
+					<button id="uploadFile">~开始上传</button>
+					<button id="rechooseFile">+重新选择</button>
+				
+				</div>
+				<div>
+					<img id="image" src="">
+				</div>
+				<div id="progress">
+					<div class="bar" style="width: 0%;"></div>
+				</div>
+			</li>
+			<li><span class="li_span">购买时间</span><input type="datetime" id="" name="" /></li>
+			<li><span class="li_span">期望价格</span><input id="" name="" /></li>
+			<li><span class="li_span">是否包邮</span><input type="checkbox" id="franking" name="" /></li>
+		</ul>
+	</div>
+	
+	<div>
+		<button class="add_button" id="login">转卖到sprite </button>
+	</div>
+	
+</div>
+</body>
+</html>

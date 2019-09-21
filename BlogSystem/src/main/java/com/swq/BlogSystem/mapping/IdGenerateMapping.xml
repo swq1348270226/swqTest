@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swq.BlogSystem.dao.IdGenerateDao">
+
+    <!-- 第一种方式，基于dao的方式-->
+    <select id="getId" parameterType="String" resultType="com.swq.BlogSystem.pojo.IdDto">
+    	select * from idgenerate where prefix = #{id}
+    </select>
+     
+   	<insert id="createId" parameterType="com.swq.BlogSystem.pojo.IdDto" >
+   	 insert into idgenerate
+   	 (prefix,value,length,createBy,lastUpdateBy) 
+   	 value 
+   	 (#{prefix},#{value},#{length},#{createBy},#{lastUpdateBy})
+    </insert>
+    
+    <update id="updateIdGenerate" parameterType="com.swq.BlogSystem.pojo.IdDto">
+    	update idgenerate set 
+    	<if test="value!=null and value!=''">
+    		value=#{value}
+    	</if>
+    	<if test="length!=null and length!=''">
+    		,length=#{length}
+    	</if>
+    	<if test="createBy!=null and createBy!=''">
+    		,createBy=#{createBy}
+    	</if>
+    	<if test="lastUpdateBy!=null and lastUpdateBy!=''">
+    		,lastUpdateBy=#{lastUpdateBy}
+    	</if>
+    	where prefix=#{prefix}
+    
+    </update>
+
+    
+</mapper>
