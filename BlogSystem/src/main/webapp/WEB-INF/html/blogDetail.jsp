@@ -12,6 +12,7 @@
 <script type="text/javascript" src="./js/blogDetail.js"></script>
 </head>
 <body>
+<input id="bid" style="display:none" value="${bid}"/>
 <div id="headPage"></div>
 <div id="main_detail">
 ${content}

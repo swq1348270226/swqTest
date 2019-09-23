@@ -313,13 +313,13 @@ li img{
 	border-radius:50px;
 }
 .favoriteBlog_li_center{
-	width:155px;
+	width:153px;
 	float:left;
 	margin-top:15px;
 	margin-left:4px;
 }
 .favoriteBlog_li_right{
-	width:45px;
+	width:48px;
 	float:left;
 	margin-top:13px;
 }
@@ -344,4 +344,5 @@ li img{
 .clicks_text{
 	margin-top:3px;
 	color:#606060;
+	font-size:10px;
 }

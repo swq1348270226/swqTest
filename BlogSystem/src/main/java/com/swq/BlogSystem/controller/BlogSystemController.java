@@ -1,6 +1,11 @@
 package com.swq.BlogSystem.controller;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -71,10 +76,29 @@ public class BlogSystemController {
 			return "error";
 		}
 		blog = blogsystemBusiness.getBlogById(bid);
-/*		request.setAttribute("blog", blog);
-		request.setAttribute("111", 111);*/
 		request.setAttribute("content", blog.getContent());
+		request.setAttribute("bid", bid);
 		return "/blogDetail";
+	}
+	
+	@RequestMapping("/addReadingCount")
+	public String addReadingCount() {
+		String result = "false";
+		String bid = request.getParameter("bid");
+		if(StringUtils.isBlank(bid)) {
+			return result;
+		}
+		if(blogsystemBusiness.addReadingCount(bid)) {
+			result = "true";
+		}
+		return result;
+	}
+	
+	@RequestMapping("/getBlogWeeklyranking")
+	@ResponseBody
+	public List<Blog> getBlogWeeklyranking() {
+		List<Blog> list= blogsystemBusiness.getBlogFeverList();
+		return list;
 	}
 	
 	

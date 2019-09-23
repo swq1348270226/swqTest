@@ -13,4 +13,8 @@ public interface BlogDao {
 	public int getBlogCount(BlogParm blogParm);
 	
 	public Blog getBlogById(String bid);
+	
+	public boolean addReadingCount(String bid);
+	
+	public List<Blog> getBlogFeverList();
 }

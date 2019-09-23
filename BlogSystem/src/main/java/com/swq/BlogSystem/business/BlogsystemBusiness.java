@@ -53,7 +53,18 @@ public class BlogsystemBusiness {
 		return blogDao.getBlogById(bid);
 	}
 	
+	public boolean addReadingCount(String bid) {
+		if(StringUtils.isBlank(bid)) {
+			throw new IllegalArgumentException("bid不能为空，参数异常");
+		}
+		return blogDao.addReadingCount(bid);
+	}
 	
+	public List<Blog> getBlogFeverList(){
+		List<Blog> list = new ArrayList();
+		list = blogDao.getBlogFeverList();
+		return list;
+	}
 	
 
 }

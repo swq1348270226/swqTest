@@ -13,7 +13,15 @@ public class Blog {
 	private String visitCount;
 	private String collectionCount;
 	private String commentCount;
+	private String fever;
 	
+	
+	public String getFever() {
+		return fever;
+	}
+	public void setFever(String fever) {
+		this.fever = fever;
+	}
 	public String getContentTxt() {
 		return contentTxt;
 	}
@@ -92,6 +100,7 @@ public class Blog {
 		result = prime * result + ((commit == null) ? 0 : commit.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((contentTxt == null) ? 0 : contentTxt.hashCode());
+		result = prime * result + ((fever == null) ? 0 : fever.hashCode());
 		result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
 		result = prime * result + ((lastUpdateBy == null) ? 0 : lastUpdateBy.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -142,6 +151,11 @@ public class Blog {
 				return false;
 		} else if (!contentTxt.equals(other.contentTxt))
 			return false;
+		if (fever == null) {
+			if (other.fever != null)
+				return false;
+		} else if (!fever.equals(other.fever))
+			return false;
 		if (isDelete == null) {
 			if (other.isDelete != null)
 				return false;
@@ -170,7 +184,7 @@ public class Blog {
 		return "Blog [bid=" + bid + ", content=" + content + ", contentTxt=" + contentTxt + ", title=" + title
 				+ ", commit=" + commit + ", comitTime=" + comitTime + ", lastUpdateBy=" + lastUpdateBy + ", isDelete="
 				+ isDelete + ", visitCount=" + visitCount + ", collectionCount=" + collectionCount + ", commentCount="
-				+ commentCount + "]";
+				+ commentCount + ", fever=" + fever + "]";
 	}
 	
 	

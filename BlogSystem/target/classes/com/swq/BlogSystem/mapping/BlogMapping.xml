@@ -15,6 +15,7 @@
 	    <result column="visitCount" property="visitCount"/>
 	    <result column="collectionCount" property="collectionCount"/>
 	    <result column="commentCount" property="commentCount"/>
+	    <result column="fever" property="fever"/>
 	</resultMap>
 
     <!-- 第一种方式，基于dao的方式-->
@@ -44,6 +45,7 @@
 	    <if test="isDelete !=null and isDelete !=''">
 	    	,isDelete
 	    </if>
+	    	,visitCount,collectionCount,commentCount
 	    )
 	     value 
 	     (
@@ -69,6 +71,7 @@
 	     <if test="isDelete !=null and isDelete !=''">
 	     	,#{isDelete}
 	     </if>
+	     ,"0","0","0"
 	     )
 
     </insert>
@@ -76,9 +79,9 @@
     <select id="getBlogList" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultMap="BlogMap">
     	select * from blogsystem
     	order by comitTime desc
-    	limit #{pageIndex},#{pageSize}
-<!--     	<if test="pageIndex !=null and pageIndex!='' and pageSize!=null and pageSize != ''">
-    	</if> -->
+     	<if test="pageIndex !=null and pageIndex!='' and pageSize!=null and pageSize != ''">
+    		limit #{pageIndex},#{pageSize}
+    	</if>
     </select>
     
     <select id="getBlogById" parameterType="string" resultMap="BlogMap">
@@ -88,6 +91,16 @@
     
     <select id="getBlogCount" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultType="Integer">
      select count(1) from blogsystem
+    </select>
+       
+    <update id="addReadingCount">
+    	update blogsystem set visitCount = visitCount+1 where bid=#{bid}
+    </update>
+    
+    <select id="getBlogFeverList" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultMap="BlogMap">
+    	select bid,content,contentTxt,title,commit,comitTime,lastUpdateBy,isDelete,visitCount,collectionCount,commentCount,
+   		 sum(visitCount+collectionCount+commentCount) as fever 
+    	from blogsystem group by bid order by fever desc limit 0,10
     </select>
        
 </mapper>

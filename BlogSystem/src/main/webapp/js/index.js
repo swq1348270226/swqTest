@@ -23,7 +23,7 @@ function listener(){
 		
 	})
 	
-	var time=setInterval(move,35000);
+	var time=setInterval(move,3500);
 	
 	function move(){
 		
@@ -43,7 +43,7 @@ function listener(){
 		clearInterval(time);
 	},function(){
 		$(".btn").hide();
-		time=setInterval(move,35000);
+		time=setInterval(move,3500);
 	})
 	
 	$(".right_btn").click(function(){
@@ -70,7 +70,11 @@ function listener(){
 }
 
 function loadData(){
+	//列表数量
 	loadcount(); 
+	
+	//加载博客周排行榜
+	loadWeeklyranking();
 }
 
 function loadcount(){
@@ -87,7 +91,7 @@ function loadcount(){
 				loadList(1)
 			}
 			 var dataL = parseInt(data);
-			 var pagesize = 5;
+			 var pagesize = 10;
 			 var pageNum = Math.ceil(dataL / pagesize);
 				$(".tcdPageCode").createPage({
 				    pageCount:pageNum,
@@ -110,7 +114,7 @@ function loadList(index){
 			dataType:"json",
 			data:{
 				"pageIndex":index,
-				"pageSize":"5"
+				"pageSize":"10"
 			},
 			success:function(datas){
 				if(datas == null){
@@ -123,7 +127,7 @@ function loadList(index){
 						liStr+='<li class="blogList_li">';
 						liStr+='<div class="list_container">';
 						liStr+='<div class="list_title"><h2 class="list_title_h2"><a href="/BlogSystem/blogDetail?bid='+data.bid+'" target="_blank">'+ data.title +'</a></h2></div>';
-						liStr+='<div class="list_centent">'+deal(data.contentTxt)+'</div>';
+						liStr+='<div class="list_centent">'+dealString(data.contentTxt,40)+'</div>';
 						liStr+='<div class="list_countInfo">';
 						liStr+='<ul>';
 						liStr+='<li class="countInfo_1"><a href=""><img class="user_head" src="./images/QQ.jpg"/></a></li>';
@@ -151,13 +155,14 @@ function loadList(index){
 }
 	
 
-function deal(content){
+function dealString(content,length){
 	var str = "";
 	if(content ==null || content==""){
 		return str;
 	}
-	if(content.length>40){
-		str= content.substring(0,40)+"...";
+	content = content.trim();
+	if(content.length>length){
+		str= content.substring(0,length)+"..";
 	}else{
 		return str=content;
 	}
@@ -168,4 +173,41 @@ function switchContent(str){
 	return  str==null?"0":str;
 }
 
+function loadWeeklyranking(){
+	$.ajax({
+		type:"post",
+		url:"/BlogSystem/getBlogWeeklyranking",
+		dataType:"json",
+		data:{
+			
+		},
+		success:function(datas){
+			if(datas == null){
+				
+			}
+			else{
+				var liStr="";
+				liStr+='<ul>';
+				$.each(datas,function(i,data){
+					liStr+='<li class="favoriteBlog_content_li">';
+					liStr+='<div class="favoriteBlog_li_left"><a href=""><img src="./images/QQ.jpg"></a></div>'
+					liStr+='<div class="favoriteBlog_li_center">';
+					liStr+='<p class="item_title"><a href="/BlogSystem/blogDetail?bid='+data.bid+'" target="_blank" title="'+dealString(data.contentTxt,60)+'">'+dealString(data.contentTxt,10)+'</a></p>';
+					liStr+='<p class="comment_count">';
+					liStr+='<span>点击量</span>';
+					liStr+='<span>'+data.visitCount+'</span>';
+					liStr+='</p>';
+					liStr+='</div>';
+					liStr+='<div class="favoriteBlog_li_right">';
+					liStr+='<p class="clicks_count"><img src="./images/up.jpg"/>'+data.fever+'</p>';
+					liStr+='<p class="clicks_text">综合指标</p>';
+					liStr+='</div>';
+					liStr+='</li>';					
+				})
+				liStr+='</ul>';
+				$("#favoriteBlog_top10_list").html(liStr);
+			}
+		}
+	})
+}
 
