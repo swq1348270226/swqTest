@@ -21,7 +21,7 @@ function listener(){
 			},
 			success:function(data){
 				if(data == "true"){
-					window.location.href="/BlogSystem/index.jsp";
+					window.location.href="/BlogSystem/index";
 				}else{
 					$("#error_tips").show();
 				}

@@ -65,30 +65,29 @@ function listener(){
 	$(".left_btn").click(function(){
 		movel();
 	})
-
 	
 }
 
 function loadData(){
 	//列表数量
-	loadcount(); 
+	loadcount("fails"); 
 	
 	//加载博客周排行榜
 	loadWeeklyranking();
 }
 
-function loadcount(){
+function loadcount(isSearch){
+	var key = $("#search").val();
 	$.ajax({
 		type:"post",
 		async:"true",
 		url:"/BlogSystem/getBlogCount",
 		dataType:"text",
-		data:{
-			
-		},
+		/*ContentType:"application/json,charset=utf-8",*/
+		data:{"contentTxt":key},
 		success:function(data){
 			if(parseInt(data)>0){
-				loadList(1)
+				loadList(1,isSearch)
 			}
 			 var dataL = parseInt(data);
 			 var pagesize = 10;
@@ -97,14 +96,15 @@ function loadcount(){
 				    pageCount:pageNum,
 				    current:1,
 				    backFn:function(p){
-				    	loadList(p);
+				    	loadList(p,isSearch);
 				    }
 				});
 		}
 	});
 }
 
-function loadList(index){
+function loadList(index,isSearch){
+		var key = $("#search").val();
 		//清空
 		$("#main_blogList").html("");
 		$.ajax({
@@ -113,6 +113,7 @@ function loadList(index){
 			url:"/BlogSystem/getBlogList",
 			dataType:"json",
 			data:{
+				"contentTxt":key,
 				"pageIndex":index,
 				"pageSize":"10"
 			},
@@ -124,10 +125,19 @@ function loadList(index){
 					var liStr="";
 					liStr+='<ul id ="blogList_ul">';
 					$.each(datas,function(i,data){
-						liStr+='<li class="blogList_li">';
+						if(i%2==1){
+							liStr+='<li class="blogList_li even">';
+						}else{
+							liStr+='<li class="blogList_li odd">';
+						}
 						liStr+='<div class="list_container">';
 						liStr+='<div class="list_title"><h2 class="list_title_h2"><a href="/BlogSystem/blogDetail?bid='+data.bid+'" target="_blank">'+ data.title +'</a></h2></div>';
-						liStr+='<div class="list_centent">'+dealString(data.contentTxt,40)+'</div>';
+						if(isSearch == "true"){
+							liStr+='<div class="list_centent">'+prominentString(data.contentTxt,key,50)+'</div>';
+						}else{
+							liStr+='<div class="list_centent">'+dealString(data.contentTxt,50)+'</div>';
+						}
+						
 						liStr+='<div class="list_countInfo">';
 						liStr+='<ul>';
 						liStr+='<li class="countInfo_1"><a href=""><img class="user_head" src="./images/QQ.jpg"/></a></li>';
@@ -155,18 +165,67 @@ function loadList(index){
 }
 	
 
+function prominentString(contentTxt,key,length){debugger;
+	var str = "";
+	if(contentTxt ==null || contentTxt==""){
+		return str;
+	}
+	
+	if(countByteLength(contentTxt,1)>length){
+		var index = contentTxt.indexOf(key);
+		
+		if(index!=-1){
+			//得出随机数
+		var random = Math.floor(Math.random()*length + 1);
+		if(index-random<0){
+			str= contentTxt.substring(0,length)+"..";
+		}else{
+			str= contentTxt.substring(i-length,index+length-random)+"..";
+		}
+		
+		}else{
+			str= contentTxt.substring(0,length)+"..";
+		}
+	}
+	return str;
+}
+
+
 function dealString(content,length){
 	var str = "";
 	if(content ==null || content==""){
 		return str;
 	}
 	content = content.trim();
-	if(content.length>length){
+	if(countByteLength(content,1)>length){
 		str= content.substring(0,length)+"..";
 	}else{
 		return str=content;
 	}
 	return str;
+}
+
+function countByteLength(str,cnCharByLen){
+	var byteLen = 0;
+	if(isEmpty(str)){
+		return byteLen
+	}
+	for(var i =0;i<str.length;i++){
+		if((/[\w\s\b\x00-\xff]/).test(str.charAt(i))){
+			byteLen+=1;
+		}
+		else{
+			byteLen +=cnCharByLen;
+		}
+	}
+	return byteLen
+}
+
+function isEmpty(str){
+	if(str == "" || str ==null ){
+		return true;
+	}
+	return false;
 }
 
 function switchContent(str){

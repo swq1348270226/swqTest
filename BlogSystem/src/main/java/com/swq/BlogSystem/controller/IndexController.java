@@ -40,17 +40,19 @@ public class IndexController {
 	
 	@RequestMapping("/getBlogList")
 	@ResponseBody
-	public List<Blog> getBlogList() {
-		
+	public List<Blog> getBlogList(String pageSize,String pageIndex,String contentTxt) {
 		BlogParm blogParm = new BlogParm();
-		String pageIndex = request.getParameter("pageIndex");
-		String pageSize = request.getParameter("pageSize");
+		blogParm.setContentTxt(contentTxt);
 		if(!StringUtils.isBlank(pageSize)) {
 			blogParm.setPageSize(Integer.valueOf(pageSize));
 		}
 		if(!StringUtils.isBlank(pageSize)) {
 			blogParm.setPageIndex((Integer.valueOf(pageIndex)-1)*Integer.valueOf(pageSize));
 		}
+
+/*		if(!StringUtils.isBlank(String.valueOf(blogParm.getPageSize()))) {
+			blogParm.setPageIndex((blogParm.getPageIndex()-1)*blogParm.getPageSize());
+		}*/
 		
 		List<Blog> list = new ArrayList<>();
 		try {
@@ -63,9 +65,12 @@ public class IndexController {
 	
 	@RequestMapping("/getBlogCount")
 	@ResponseBody
-	public int getBlogCount() {
-		int count = 0;
+	public int getBlogCount(String contentTxt) {
 		BlogParm blogParm = new BlogParm();
+		if(!StringUtils.isBlank(contentTxt)) {
+			blogParm.setContentTxt(contentTxt);
+		}
+		int count = 0;
 		try {
 			count = blogsystemBusiness.getBlogCount(blogParm);
 		} catch (Exception e) {

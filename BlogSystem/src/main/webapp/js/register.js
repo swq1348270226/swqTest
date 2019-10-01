@@ -37,7 +37,10 @@ function listener(){
 	//用户名校验
 	$("#usrename").on("focus",function(){
 		$("#usernameTips").removeClass("input_illegal");
+		$("#usernameExistTips").removeClass("input_illegal");
+		$("#usernameExistTips").hide();
 		$("#usernameTips").show();
+		
 	})
 	
 	
@@ -48,6 +51,7 @@ function listener(){
 			$("#usernameTips").addClass("input_illegal");
 		}else{
 			$("#usernameTips").hide();
+			validateUser(username);
 		}
 	})
 	
@@ -82,7 +86,15 @@ function listener(){
 				"password":$("#password").val()
 			},
 			success:function(){
-				
+				if(data =="repeat"){
+					alert("账号已经被注册！");
+				}
+				if(data =="true"){
+					alert("注册成功！");
+				}
+				if(data =="false"){
+					alert("注册失败！");
+				}
 			}
 			
 		})
@@ -97,7 +109,25 @@ function validateLength(str){
 	return false;
 }
 
-function change(){
+function change(username){
 	var date = new Date();
 	$("#codeImg").attr("src","/BlogSystem/getCode?modelName=REGISTER_NAME&&data="+date);
+}
+
+function validateUser(username){
+	$.ajax({
+		type:"post",
+		url:"/BlogSystem/checkUser",
+		dataType:"text",
+		data:{
+			"username":username
+		},
+		success:function(data){
+			if(data == "repeat"){
+				$("#usernameExistTips").show();
+				$("#usernameExistTips").addClass("input_illegal");
+				return;
+			}
+		}
+	})
 }

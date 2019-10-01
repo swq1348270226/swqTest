@@ -253,10 +253,12 @@ li img{
 	width:750px;
 	height:auto;
 }
+.right_part{
+	float:right;
+}
 .show_myFavorite{
 	width:300px;
 	height:100px;
-	float:right;
 	margin-top:15px;
 }
 .my_showTime{
@@ -267,8 +269,8 @@ li img{
 	width:300px;
 	height:800px;
 	border:1px solid #ddd;
-	float:right;
 	margin-top:15px;
+	position:relative;
 }
 .favoriteBlog_title{
 	width:85%;
@@ -345,4 +347,61 @@ li img{
 	margin-top:3px;
 	color:#606060;
 	font-size:10px;
+}
+.hotReviews_div{
+	width:300px;
+	height:570px;
+	border:1px solid #ddd;
+	margin-top:15px;
+}
+.hotReviews_h3{
+	height:40px;
+	border-bottom:1px solid #ddd;
+	line-height:40px;
+	padding-left:15px;
+}
+.hotReviews_list_ul{
+	width:88%;
+	height:100%;
+	margin:0 auto;
+}
+.hotReviews_list_ul li{
+	height:52px;
+	border-bottom:1px dashed #dadada;
+	
+}
+.hotReviews_list_ul_li_span{
+	width:30px;
+	height:30px;
+}
+.hotReviews_list_ul_li_span a{
+	display:inline-block;
+	
+}
+.hotReviews_list_ul_li_span a img{
+	width:30px;
+	height:30px;
+	
+}
+.hotReviews_list_ul_li_userinfo{
+	width:70px;
+	height:30px;
+}
+.hotReviews_list_ul span{
+	display:inline-block;
+	vertical-align:middle;
+	margin-top: 11px;
+}
+.hotReviews_list_ul_li_content{
+	width:150px;
+	height:30px;
+}
+.hotReviews_list_ul a{
+	display:inline-block;
+	width:100%;
+	height:100%;
+	line-height:30px;
+}
+.even{
+	background:#e7e7e7;
 }

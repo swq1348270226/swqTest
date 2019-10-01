@@ -1,9 +1,17 @@
 $(document).ready(function(){
+	//加載登錄信息情況
+	checkIsLogin();
 	//设置监听
 	listener();
 })
 
 function listener(){
+	
+	$("#searchsubmit").on("click",function(){
+		//列表数量
+		loadcount("true"); 
+	})
+	
 	/*一*/
 	$("#java_drop").mouseover(function(){
 		$("#java_drop_ul").show();
@@ -93,4 +101,30 @@ function search(){
 	else{
 		$("#search_div").hide();
 	}
+}
+
+function checkIsLogin(){
+	$.ajax({
+		type:"post",
+		url:"/BlogSystem/checkIsLogin",
+		async:"true",
+		dataType:"json",
+		data:{
+			
+		},
+		success:function(data){
+			if(data.status == "login"){
+				$("#welcomeName").html("");
+				$("#welcomeName").html(data.name);
+				$("#welcomeName").show();
+				$("#loginButton").hide();
+				$("#cancellation").show();
+			}
+			else{
+				$("#welcomeName").hide();
+				$("#loginButton").show();
+				$("#cancellation").hide();
+			}
+		}
+	})
 }

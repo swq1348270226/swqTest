@@ -5,8 +5,18 @@
 <mapper namespace="com.swq.BlogSystem.dao.UserDao">
 
     <!-- 第一种方式，基于dao的方式-->
-    <select id="getUser" parameterType="String" resultType="com.swq.BlogSystem.pojo.User">
+    <select id="getUserById" parameterType="String" resultType="com.swq.BlogSystem.pojo.User">
     	select * from user where id = #{id}
+    </select>
+    
+    <select id="getUserInfo" parameterType="com.swq.BlogSystem.pojo.User" resultType="com.swq.BlogSystem.pojo.User">
+    	select * from user where 1=1
+    	<if test="id !=null and id!=''">
+    		and id = #{id}
+    	</if>
+    	<if test="userName !=null and userName!=''">
+    		and userName = #{userName}
+    	</if>
     </select>
     
      <select id="getCartList" parameterType="com.swq.BlogSystem.pojo.CartDto" resultType="com.swq.BlogSystem.pojo.Cart">
@@ -21,7 +31,15 @@
     </insert>
     
    	<insert id="registerUserInfo" parameterType="com.swq.BlogSystem.pojo.User" >
-   	 insert into user(id,password) value (#{id},#{password})
+   	 insert into user(id,userName,password
+   	 <if test="age!=null and age!=''">
+   	 	,age
+   	 </if>
+   	 ) value (#{id},#{userName},#{password}
+   	 <if test="age!=null and age!=''">
+   	 	,#{age}
+   	 </if>
+   	 )
     </insert>
 
     

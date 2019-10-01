@@ -77,7 +77,10 @@
     </insert>
     
     <select id="getBlogList" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultMap="BlogMap">
-    	select * from blogsystem
+    	select * from blogsystem where 1=1
+	     <if test="contentTxt != null and contentTxt != ''">
+	     	and instr(contentTxt,#{contentTxt})>0
+	     </if>
     	order by comitTime desc
      	<if test="pageIndex !=null and pageIndex!='' and pageSize!=null and pageSize != ''">
     		limit #{pageIndex},#{pageSize}
@@ -90,7 +93,10 @@
     </select>
     
     <select id="getBlogCount" parameterType="com.swq.BlogSystem.pojo.BlogParm" resultType="Integer">
-     select count(1) from blogsystem
+     select count(1) from blogsystem where 1=1
+     <if test="contentTxt != null and contentTxt != ''">
+     	and instr(contentTxt,#{contentTxt})
+     </if>
     </select>
        
     <update id="addReadingCount">

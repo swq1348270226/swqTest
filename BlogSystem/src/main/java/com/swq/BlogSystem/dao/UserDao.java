@@ -13,4 +13,6 @@ public interface UserDao {
 	public int addCart(Cart cart);
 
 	public int registerUserInfo(User user);
+	
+	public User getUserInfo(User user);
 }
