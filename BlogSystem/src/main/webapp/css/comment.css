@@ -1,0 +1,124 @@
+.comment_main{
+	width:1080px;
+	margin:10px auto;
+}
+#div_select_star{
+	display:inline-block;
+	vertical-align:sub;
+	margin-left:3px;
+}
+.div_comment_summary{
+	width:100%;
+	border:1px solid #e5e5e5;
+	font-size:12px;
+	height:35px;
+	line-height:35px;
+}
+.comment_score_show{
+	color:#f6aa16;
+	font-weight:bold;
+	font-size:14px;
+}
+.comment_socre_participate{
+	color:#006699;
+	cursor:pointer;
+	margin-left:5px;
+}
+#div_article_comment{
+	width:100%;
+	border:1px solid #e5e5e5;
+	margin-top:20px;
+	font-size:12px;
+}
+.span_article_score{
+	margin-top:8px;
+	width:100%;
+	
+}
+#article_comment_textarea{
+	width:900px;
+	height:120px;
+	margin:13px 0 13px 0;
+}
+#comment_submit{
+	border-radius:3px;
+	width:75px;
+	height:27px;
+	margin:5px 0 10px 0;
+	cursor:pointer;
+	background-color:#f6f6f6;
+	border:1px solid #c5c5c5;
+}
+.totalInfo{
+	margin: 0 0 0 30px;
+	width:95%;
+	height:100%;
+}
+.div_socre_area{
+	margin:0 0 0 30px;
+}
+#div_reply{
+	border:1px solid #e5e5e5;
+	margin-top:20px;
+	font-size:12px;
+}
+.div_replyInfo_title{
+	padding:10px 0 10px 30px;
+	background-color:#F4F4F4;
+}
+.div_replyInfo_userAndTime{
+	margin:0 0 10px 0;
+}
+.div_select_star_show{
+	background:url(../images/comment/star_full.png) 1px 0px no-repeat;
+	width:18px;
+	height:18px;
+	display:inline-block;
+}
+.span_socre_star{
+	width:18px;
+	height:18px;
+	display:inline-block;
+	cursor:pointer;
+	vertical-align:sub;
+}
+.span_socre_star_empty{
+	background:url(../images/comment/star_empty.png) 1px 0px no-repeat;
+}
+.span_socre_star_full{
+	background:url(../images/comment/star_full.png) 1px 0px no-repeat;
+}
+#span_coment_socreArea{
+	display:inline-table;
+}
+.div_starScore{
+	display:inline-table;
+}
+.div_replay_listMainInfo{
+	margin:10px 0 0 30px;
+	border-bottom:1px dotted #a3a3a3;
+	margin-bottom:20px;
+}
+.div_replyInfo_score{
+	vertical-align:sub;
+	height: 18px;
+    display: inline-table;
+}
+.div_replyInfo_author{
+	margin-right:12px;
+}
+.div_replyInfo_time{
+	margin-right:12px;
+}
+#div_replyInfo_switch{
+	margin:10px 0 10px 0;
+	color:#0080ff;
+}
+.div_replyInfo_authorReply{
+	margin-left:75px;
+	margin:0 0 20px 75px;
+}
+.div_replyInfo_autor_content{
+	margin-top:15px;
+	line-height:17px;
+}

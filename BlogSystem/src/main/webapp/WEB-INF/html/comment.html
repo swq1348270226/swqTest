@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/comment.css">
+<!-- <script type="text/javascript" src="./common/jquery-3.4.1.js"></script> -->
+<script type="text/javascript" src="./common/jquery-1.12.4.fixed.min.js"></script>
+<script type="text/javascript" src="./js/comment.js"></script>
+<title></title>
+
+</head>
+<body>
+<div class="comment_main">
+	<div class="div_comment_summary">
+		<div class="totalInfo">
+			<div>
+				平均分：<span class="comment_score_show">5分</span>
+				<div id="div_select_star">
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+				</div>
+				<span class="comment_socre_participate">1</span>
+				<span class="">人次参与评分</span>
+			</div>
+		</div>
+				
+	</div>
+	
+	<div id="div_article_comment">
+		<div class="div_socre_area">
+			<div class="span_article_score">
+				<span style="color: red">*</span>
+				<span style="">请您为该文章评分：</span>
+				<div class="div_starScore">
+					很差
+					<span id="span_coment_socreArea">
+						<span class="span_socre_star span_socre_star_empty"></span>
+						<span class="span_socre_star span_socre_star_empty"></span>
+						<span class="span_socre_star span_socre_star_empty"></span>
+						<span class="span_socre_star span_socre_star_empty"></span>
+						<span class="span_socre_star span_socre_star_empty"></span>
+					</span>
+					非常好
+				</div>
+			</div>
+			<div>
+				<textarea id="article_comment_textarea"></textarea>
+			</div>
+			<div><button id="comment_submit">留言</button></div>
+		</div>
+	</div>
+	
+	<div id="div_reply">
+		<div class="div_replyInfo_title">
+			<img src="">最近反馈
+		</div>
+		
+		<div class="div_replay_listMainInfo">
+			<!-- 留言人和时间 -->
+			<div class="div_replyInfo_userAndTime">
+				<span class="div_replyInfo_author">张三丰</span>
+				<span class="div_replyInfo_time">2019-09-28 12:45:21</span>
+				<span class="div_replyInfo_score">
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+					<span class="div_select_star_show"></span>
+				</span>
+			</div>
+			<!-- 留言内容 -->
+			<div class="div_replyInfo_content">
+				<div>
+					<span>uawei Versatile Routing Platform Software VRP (R) software, Version 5.70 (S5700 V100R005C01) Copyright (C) 2003-2010 HUAWEI TECH CO., LTD Quidway S5700-28C-EI Routing Switch uptime is 0 week, 0 day, 3 hours, 19 minutes CPLD   Version : 74 能把最新的升级软件发给我吗</span>
+				</div>
+			</div>
+			<!-- 收起,展开 -->
+			<div id="div_replyInfo_switch">展开</div>
+			<!-- 作者回复 -->
+			<div class="div_replyInfo_authorReply">
+				<div class="">
+					<span style="color:#0080ff;">[博主回复]：</span>
+					<span style="margin-left:10px;">2019-09-29 14:49:57</span>
+				</div>
+				<div class="div_replyInfo_autor_content">
+					<span>您好！感谢您的反馈。您的设备型号是S5700-28C-EI，最新软件版本为V200R005C00SPC500（软件路径：https://support.huawei.com/enterprise/zh/switches/S5700-pid-6691579/software/21553101?idAbsPath=fixnode01%7C24030814%7C21782164%7C21782167%7C22318564%7C22347908&subModel=22347908&subModelName=S5700-28C-EI）如果您还有其它疑问，欢迎在对应网页中继续留言，谢谢。</span>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	
+</div>
+</body>
+</html>
