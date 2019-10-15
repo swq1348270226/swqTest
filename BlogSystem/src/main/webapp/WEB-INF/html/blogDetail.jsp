@@ -8,7 +8,7 @@
 <title>博客论文</title>
 
 <link rel="stylesheet" href="./css/blogDetail.css">
-<script type="text/javascript" src="./common/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="./common/jquery-1.12.4.fixed.min.js"></script>
 <script type="text/javascript" src="./js/blogDetail.js"></script>
 </head>
 <body>
@@ -16,6 +16,8 @@
 <div id="headPage"></div>
 <div id="main_detail">
 ${content}
+</div>
+<div id="comment_area">
 </div>
 </body>
 </html>

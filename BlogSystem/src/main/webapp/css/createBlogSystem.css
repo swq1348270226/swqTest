@@ -1,6 +1,6 @@
 .release_main{
 	width:1080px;
-	margin:0 auto;
+	margin:30px auto;
 }
 .release_ul{
 	
@@ -15,19 +15,40 @@ color: #aab2bd;
 font-size: 12px;
 /* placeholder位置  */
 text-align: left;
-padding:15px;
-}
-.release_ul li{
-	width:100%;
-	
+
 }
 .title_li{
-	height:80px;
-	line-height:80px;
+	width:100%;
+	list-style:none;
+	margin-top: 10px;
+}
+select{
+/* 	width: 90px;
+    height: 35px;
+     */
+    font-size:12px;
+    width: 150px;
+    height: 35px;
+	padding: 0 2.5%;
+	
+    
+}
+option{
+	margin-top:3px;
+	text-align:center;
+
+}
+.title_li h4{
+	width:80px;
+	height:50px;
+	line-height:50px;
+	display:inline-block;
 }
 #title{
-	width:70%;
-	height:50px;
+	width:60%;
+	height:40px;
+	padding-left:10px;
+	margin-left: 4px;
 }
 
 #submit{

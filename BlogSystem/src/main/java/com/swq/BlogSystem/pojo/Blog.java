@@ -6,6 +6,7 @@ public class Blog {
 	private String content;
 	private String contentTxt;
 	private String title;
+	private String type;
 	private String commit;
 	private String comitTime;
 	private String lastUpdateBy;
@@ -16,6 +17,12 @@ public class Blog {
 	private String fever;
 	
 	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public String getFever() {
 		return fever;
 	}
@@ -104,6 +111,7 @@ public class Blog {
 		result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
 		result = prime * result + ((lastUpdateBy == null) ? 0 : lastUpdateBy.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((visitCount == null) ? 0 : visitCount.hashCode());
 		return result;
 	}
@@ -171,6 +179,11 @@ public class Blog {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
 		if (visitCount == null) {
 			if (other.visitCount != null)
 				return false;
@@ -182,9 +195,9 @@ public class Blog {
 	@Override
 	public String toString() {
 		return "Blog [bid=" + bid + ", content=" + content + ", contentTxt=" + contentTxt + ", title=" + title
-				+ ", commit=" + commit + ", comitTime=" + comitTime + ", lastUpdateBy=" + lastUpdateBy + ", isDelete="
-				+ isDelete + ", visitCount=" + visitCount + ", collectionCount=" + collectionCount + ", commentCount="
-				+ commentCount + ", fever=" + fever + "]";
+				+ ", type=" + type + ", commit=" + commit + ", comitTime=" + comitTime + ", lastUpdateBy="
+				+ lastUpdateBy + ", isDelete=" + isDelete + ", visitCount=" + visitCount + ", collectionCount="
+				+ collectionCount + ", commentCount=" + commentCount + ", fever=" + fever + "]";
 	}
 	
 	

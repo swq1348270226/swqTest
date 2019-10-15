@@ -81,6 +81,7 @@ public class LoginController {
 		User user = (User)session.getAttribute("CURRENT_USER");
 		if(user == null) {
 			map.put("status", "noLogin");
+			map.put("url", "/BlogSystem/login/BlogSystem/login?redirect=http://localhost:8080/BlogSystem/blogDetail?bid=BL100016");
 			return map;
 		}
 		map.put("status", "login");

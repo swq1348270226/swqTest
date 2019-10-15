@@ -13,6 +13,7 @@
 	font-size:12px;
 	height:35px;
 	line-height:35px;
+	margin-top: 40px;
 }
 .comment_score_show{
 	color:#f6aa16;
@@ -67,7 +68,7 @@
 	background-color:#F4F4F4;
 }
 .div_replyInfo_userAndTime{
-	margin:0 0 10px 0;
+	margin:12px 0 10px 0;
 }
 .div_select_star_show{
 	background:url(../images/comment/star_full.png) 1px 0px no-repeat;
@@ -96,7 +97,6 @@
 }
 .div_replay_listMainInfo{
 	margin:10px 0 0 30px;
-	border-bottom:1px dotted #a3a3a3;
 	margin-bottom:20px;
 }
 .div_replyInfo_score{
@@ -110,15 +110,40 @@
 .div_replyInfo_time{
 	margin-right:12px;
 }
-#div_replyInfo_switch{
-	margin:10px 0 10px 0;
+.div_replyInfo_switch{
+	margin:0 0 10px 0;
 	color:#0080ff;
+	cursor:pointer;
+	width:30px;
 }
 .div_replyInfo_authorReply{
 	margin-left:75px;
-	margin:0 0 20px 75px;
+	margin:0 0 15px 75px;
 }
 .div_replyInfo_autor_content{
-	margin-top:15px;
+	margin-top:12px;
 	line-height:17px;
+}
+.div_reply_mainInfo{
+	border-bottom:1px dotted #a3a3a3;
+}
+.comment_owner_reply{
+	border-radius:3px;
+	width:50px;
+	height:25px;
+	cursor:pointer;
+	background-color:#f6f6f6;
+	border:1px solid #c5c5c5;
+}
+.comment_owner_reply_span{
+	display:inline-block;
+	float:right;
+	margin-right:100px;
+}
+.reply_text{
+	width:450px;
+	height:175px;
+}
+.div_replyInfo_content{
+	padding-bottom:18px;
 }

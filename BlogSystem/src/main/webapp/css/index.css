@@ -384,6 +384,7 @@ li img{
 	
 }
 .hotReviews_list_ul_li_userinfo{
+	overflow:hidden;
 	width:70px;
 	height:30px;
 }
@@ -391,8 +392,11 @@ li img{
 	display:inline-block;
 	vertical-align:middle;
 	margin-top: 11px;
+	margin-left:4px;
+	
 }
 .hotReviews_list_ul_li_content{
+	overflow:hidden;
 	width:150px;
 	height:30px;
 }

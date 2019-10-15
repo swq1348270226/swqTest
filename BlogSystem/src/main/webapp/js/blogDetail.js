@@ -1,8 +1,14 @@
 $(document).ready(function(){
+
+	$.ajaxSetup ({
+		cache: false //关闭AJAX相应的缓存
+	});
 	//加载页头
 	$("#headPage").load("/BlogSystem/getHead");
-	//设置监听
-	//listener();
+	
+	$("#comment_area").load("/BlogSystem/getCommentHtml");
+
+
 	
 	//增加阅读数量
 	addReadingCount();

@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+	$.ajaxSetup ({
+		cache: false //关闭AJAX相应的缓存
+	});
+	
 	$("#headPage").load("/BlogSystem/getHead",function(){
 	});
 		
@@ -74,6 +79,9 @@ function loadData(){
 	
 	//加载博客周排行榜
 	loadWeeklyranking();
+	
+	//加载最新回复
+	loadNewestComment();
 }
 
 function loadcount(isSearch){
@@ -103,7 +111,7 @@ function loadcount(isSearch){
 	});
 }
 
-function loadList(index,isSearch){
+function loadList(index,isSearch){debugger
 		var key = $("#search").val();
 		//清空
 		$("#main_blogList").html("");
@@ -165,7 +173,7 @@ function loadList(index,isSearch){
 }
 	
 
-function prominentString(contentTxt,key,length){debugger;
+function prominentString(contentTxt,key,length){
 	var str = "";
 	if(contentTxt ==null || contentTxt==""){
 		return str;
@@ -180,7 +188,7 @@ function prominentString(contentTxt,key,length){debugger;
 		if(index-random<0){
 			str= contentTxt.substring(0,length)+"..";
 		}else{
-			str= contentTxt.substring(i-length,index+length-random)+"..";
+			str= contentTxt.substring(random-length,index+length-random)+"..";
 		}
 		
 		}else{
@@ -265,6 +273,30 @@ function loadWeeklyranking(){
 				})
 				liStr+='</ul>';
 				$("#favoriteBlog_top10_list").html(liStr);
+			}
+		}
+	})
+}
+
+function loadNewestComment(){
+	$.ajax({
+		type:"post",
+		url:"/BlogSystem/getNewestComment",
+		dataType:"json",
+		data:{},
+		success:function(datas){
+			if(datas!=null){
+				var commentStr = "";
+				commentStr+='<ul class="hotReviews_list_ul">';
+				$.each(datas,function(i,data){
+					commentStr+='<li>';
+					commentStr+='<span class="hotReviews_list_ul_li_span"><a><img src="./images/QQ.jpg"></a></span>';
+					commentStr+='<span class ="hotReviews_list_ul_li_userinfo"><a href="" style="font-weight: 900" title="'+data.userId+'">'+data.userId+':</a></span>';
+					commentStr+='<span class ="hotReviews_list_ul_li_content"><a href="" title="'+data.comment+'">'+data.comment+'</a></span>';
+					commentStr+='</li>';
+				})
+				commentStr+='</ul>';
+				$("#hotReviews_list").html(commentStr);
 			}
 		}
 	})

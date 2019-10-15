@@ -85,7 +85,7 @@ function listener(){
 				"username":$("#usrename").val(),
 				"password":$("#password").val()
 			},
-			success:function(){
+			success:function(data){
 				if(data =="repeat"){
 					alert("账号已经被注册！");
 				}

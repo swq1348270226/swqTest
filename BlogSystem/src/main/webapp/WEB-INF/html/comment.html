@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<!-- <meta charset="UTF-8"> -->
 <link rel="stylesheet" href="./css/comment.css">
-<!-- <script type="text/javascript" src="./common/jquery-3.4.1.js"></script> -->
-<script type="text/javascript" src="./common/jquery-1.12.4.fixed.min.js"></script>
+<link rel="stylesheet" href="./js/jqueryUI/jquery-ui.css">
+<script type="text/javascript" src="./js/jqueryUI/jquery-ui.js"></script>
 <script type="text/javascript" src="./js/comment.js"></script>
 <title></title>
 
 </head>
 <body>
+<input id="bid" style="display:none" value="BL100016"/>
 <div class="comment_main">
 	<div class="div_comment_summary">
 		<div class="totalInfo">
@@ -58,8 +59,11 @@
 			<img src="">最近反馈
 		</div>
 		
-		<div class="div_replay_listMainInfo">
-			<!-- 留言人和时间 -->
+		<div id="div_replay_listMainInfo" class="div_replay_listMainInfo">
+		
+		</div>
+<!-- 		<div id="div_replay_listMainInfo" class="div_replay_listMainInfo" style="display:none">
+			留言人和时间
 			<div class="div_replyInfo_userAndTime">
 				<span class="div_replyInfo_author">张三丰</span>
 				<span class="div_replyInfo_time">2019-09-28 12:45:21</span>
@@ -70,16 +74,17 @@
 					<span class="div_select_star_show"></span>
 					<span class="div_select_star_show"></span>
 				</span>
+				<span class="comment_owner_reply_span"><button id="comment_owner_reply">回复</button></span>
 			</div>
-			<!-- 留言内容 -->
+			留言内容
 			<div class="div_replyInfo_content">
 				<div>
 					<span>uawei Versatile Routing Platform Software VRP (R) software, Version 5.70 (S5700 V100R005C01) Copyright (C) 2003-2010 HUAWEI TECH CO., LTD Quidway S5700-28C-EI Routing Switch uptime is 0 week, 0 day, 3 hours, 19 minutes CPLD   Version : 74 能把最新的升级软件发给我吗</span>
 				</div>
 			</div>
-			<!-- 收起,展开 -->
+			收起,展开
 			<div id="div_replyInfo_switch">展开</div>
-			<!-- 作者回复 -->
+			作者回复
 			<div class="div_replyInfo_authorReply">
 				<div class="">
 					<span style="color:#0080ff;">[博主回复]：</span>
@@ -90,11 +95,32 @@
 				</div>
 			</div>
 			
-		</div>
+		</div> -->
 		
 		
 	</div>
 	
 </div>
+
+<!-- 留言成功提示框 -->
+<div id="comment_success_dialog" style="display:none">
+	<span>留言成功，感谢您的留言！</span>
+</div>
+
+<!-- 请登录提示框 -->
+<div id="comment_pleaceLogin_dialog" style="display:none">
+	<span>请先登录！</span>
+</div>
+
+<!-- 回复失败提示框 -->
+<div id="comment_false_dialog" style="display:none">
+	<span>回复失败！</span>
+</div>
+
+<!-- 回复提示框 -->
+<div id="reply_dialog_div" style="display:none">
+	<textarea type="text" id="reply_text" class="reply_text"></textarea>
+</div>
+
 </body>
 </html>

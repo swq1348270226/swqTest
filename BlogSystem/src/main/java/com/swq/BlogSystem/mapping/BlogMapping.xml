@@ -9,6 +9,7 @@
 	    <result column="content" property="content"/>
 	    <result column="title" property="title" />
 	    <result column="commit" property="commit"/>
+	    <result column="type" property="type"/>
 	    <result column="comitTime" property="comitTime"/>
 	    <result column="lastUpdateBy" property="lastUpdateBy"/>
 	    <result column="isDelete" property="isDelete"/>
@@ -35,6 +36,9 @@
 	   	<if test="title !=null and title !=''">
 	    	,title
 	    </if>
+	    <if test="type !=null and type !=''">
+	    	,type
+	    </if>
 	    <if test="commit !=null and commit !=''">
 	    	,commit
 	    </if>
@@ -60,6 +64,9 @@
 	    </if>
 	     <if test="title !=null and title !=''">
 	    	,#{title}
+	    </if>
+	    <if test="type !=null and type !=''">
+	    	,#{type}
 	    </if>
 	     <if test="commit !=null and commit !=''">
 	     	,#{commit}

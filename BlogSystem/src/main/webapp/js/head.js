@@ -128,3 +128,20 @@ function checkIsLogin(){
 		}
 	})
 }
+
+function checkLoginStatus(){
+	var result = false;
+	$.ajax({
+		type:"post",
+		url:"/BlogSystem/checkIsLogin",
+		async:false,
+		dataType:"json",
+		data:{},
+		success:function(data){
+			if(data.status == "login"){
+				result = true;
+			}
+		}
+	})
+	return result;
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swq.BlogSystem.dao.CommentDao">
+
+<resultMap id="commentMap" type="com.swq.BlogSystem.pojo.Comment">
+	<result property="commentId" column="comment_id"/>
+	<result property="bid" column="bid"/>
+	<result property="userId" column="user_id"/>
+	<result property="sysuserId" column="sysuser_id"/>
+	<result property="score" column="score"/>
+	<result property="comment" column="comment"/>
+	<result property="commentTime" column="commenttime"/>
+	<result property="parseCount" column="parse_count"/>
+	<result property="status" column="status"/>
+</resultMap>
+
+<resultMap id="replyMap" type="com.swq.BlogSystem.pojo.Reply">
+	<result property="commentId" column="comment_id"/>
+	<result property="replyId" column="reply_id"/>
+	<result property="userId" column="user_id"/>
+	<result property="sysuserId" column="sysuser_id"/>
+	<result property="content" column="comment"/>
+	<result property="praseCount" column="prase_count"/>
+	<result property="replyTime" column="replytime"/>
+</resultMap>
+
+    <!-- 第一种方式，基于dao的方式-->
+<insert id="createComent" parameterType="Map">
+insert into comment
+ (comment_id,bid,user_id,sysuser_id,score,comment,commenttime,parse_count
+ <if test="status!=null and status!=''">
+ ,status
+ </if>
+ ) 
+value 
+(#{comment_id},#{bid},#{user_id},#{sysuser_id},#{score},#{comment},now(),"0"
+ <if test="status!=null and status!=''">
+ ,#{status}
+ </if>
+)
+</insert>
+
+<select id="getCommentList" parameterType="String" resultMap="commentMap">
+	select * from comment where 1=1
+	<if test="bid!=null and bid!=''">
+	 	and bid = #{bid} 
+	</if>
+	<if test="sysuserId!=null and sysuserId!=''">
+		and sysuser_id = #{sysuserId}
+	</if>
+	 order by commenttime desc
+	<if test="pageIndex!=null and pageSize!=null">
+		limit #{pageIndex},#{pageSize}
+	</if>
+</select>
+
+<insert id="createReply" parameterType="map" >
+	insert into comment_reply (comment_id,reply_id,user_id,sysuser_id,comment,prase_count,replytime)
+	 value (#{commentId},#{replyId},#{userId},#{sysuserId},#{replyContent},"0",now())
+</insert>
+
+<select id="getReplyList" parameterType="String" resultMap="replyMap">
+	select * from comment_reply where 1=1 and comment_id = #{commentId}
+</select>
+    
+</mapper>
