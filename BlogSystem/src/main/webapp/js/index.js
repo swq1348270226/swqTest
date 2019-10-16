@@ -188,7 +188,7 @@ function prominentString(contentTxt,key,length){
 		if(index-random<0){
 			str= contentTxt.substring(0,length)+"..";
 		}else{
-			str= contentTxt.substring(random-length,index+length-random)+"..";
+			str= contentTxt.substring(index-random,index+length-random)+"..";
 		}
 		
 		}else{

@@ -12,7 +12,7 @@ function listener(){
 		$.ajax({
 			url:"/BlogSystem/validateCode",
 			type:"get",
-			async:"true",
+			async:false,
 			dataType:"text",
 			data:{
 				"modelName":"REGISTER_NAME",
@@ -75,7 +75,11 @@ function listener(){
 	
 	//注册提交事件
 	$("#register").click(function(){
-		
+		if(codeStatus=="false"){
+			$("#tips").show();
+			$("#codeStatus").attr("src","./images/nopass.jpg");
+			return;
+		}
 		$.ajax({
 			url:"/BlogSystem/registerUserInfo",
 			type:"POST",
@@ -90,7 +94,7 @@ function listener(){
 					alert("账号已经被注册！");
 				}
 				if(data =="true"){
-					alert("注册成功！");
+					window.location.href="/BlogSystem/login";
 				}
 				if(data =="false"){
 					alert("注册失败！");

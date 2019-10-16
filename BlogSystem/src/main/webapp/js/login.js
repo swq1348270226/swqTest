@@ -10,6 +10,11 @@ function listener(){
 	
 	//登录验证
 	$("#login").click(function(){
+		if(codeStatus=="false"){
+			$("#tips").show();
+			$("#codeStatus").attr("src","./images/nopass.jpg");
+			return;
+		}
 		$.ajax({
 			url:"/BlogSystem/validateLogin",
 			type:"post",
@@ -34,7 +39,7 @@ function listener(){
 		$.ajax({
 			url:"/BlogSystem/validateCode",
 			type:"get",
-			async:"true",
+			async:false,
 			dataType:"text",
 			data:{
 				"modelName":"LOGIN_NAME",
